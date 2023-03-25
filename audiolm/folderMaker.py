@@ -57,3 +57,11 @@ def make_placeholder_dataset():
   save_wav(f"{dataset_folder}/subdirectory/example.wav", get_sinewave(freq=330.0))
 
 make_placeholder_dataset()
+if not os.path.isdir("hubert"):
+  os.makedirs("hubert")
+if not os.path.isfile(hubert_ckpt):
+  hubert_ckpt_download = f"https://dl.fbaipublicfiles.com/{hubert_ckpt}"
+  urllib.request.urlretrieve(hubert_ckpt_download, f"./{hubert_ckpt}")
+if not os.path.isfile(hubert_quantizer):
+  hubert_quantizer_download = f"https://dl.fbaipublicfiles.com/{hubert_quantizer}"
+  urllib.request.urlretrieve(hubert_quantizer_download, f"./{hubert_quantizer}")
