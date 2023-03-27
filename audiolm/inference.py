@@ -16,6 +16,18 @@ hubert_ckpt = 'hubert/hubert_base_ls960.pt'
 hubert_quantizer = f'hubert/hubert_base_ls960_L9_km500.bin' # listed in row "HuBERT Base (~95M params)", column Quantizer
 # Placeholder data generation
 # Everything together
+
+soundstream = SoundStream(
+    codebook_size = 1024,
+    rq_num_quantizers = 8,
+)
+
+soundstream.load(f"./{soundstream_ckpt}")
+wav2vec = HubertWithKmeans(
+    checkpoint_path = f'./{hubert_ckpt}',
+    kmeans_path = f'./{hubert_quantizer}'
+)
+
 audiolm = AudioLM(
     wav2vec = wav2vec,
     codec = soundstream,
