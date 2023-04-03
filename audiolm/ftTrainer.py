@@ -14,6 +14,7 @@ dataset_folder = "placeholder_dataset"
 soundstream_ckpt = "results/soundstream.8.pt" # this can change depending on number of steps
 hubert_ckpt = 'hubert/hubert_base_ls960.pt'
 hubert_quantizer = f'hubert/hubert_base_ls960_L9_km500.bin' # listed in row "HuBERT Base (~95M params)", column Quantizer
+fine_transformer_ckpt = 'results/fine.transformer.8.pt'
 # Placeholder data generation
 
 soundstream = SoundStream(
@@ -33,7 +34,7 @@ fine_transformer = FineTransformer(
 
 trainer = FineTransformerTrainer(
     transformer = fine_transformer,
-    codec = soundstream,
+    soundstream = soundstream,
     folder = dataset_folder,
     batch_size = 1,
     data_max_length = 320 * 32,
