@@ -8,7 +8,7 @@ from audiolm_pytorch import SoundStream, SoundStreamTrainer, HubertWithKmeans, S
 from torch import nn
 import torch
 import torchaudio
-
+print("WOOO")
 # define all dataset paths, checkpoints, etc
 dataset_folder = "placeholder_dataset"
 soundstream_ckpt = "results/soundstream.8.pt" # this can change depending on number of steps
@@ -38,9 +38,11 @@ trainer = FineTransformerTrainer(
     folder = dataset_folder,
     batch_size = 1,
     data_max_length = 320 * 32,
+    save_model_every = 4,
     num_train_steps = 9
 )
 # NOTE: I changed num_train_steps to 9 (aka 8 + 1) from 10000 to make things go faster for demo purposes
 # adjusting save_*_every variables for the same reason
 
 trainer.train()
+print("WOOO")
