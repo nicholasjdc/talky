@@ -14,6 +14,7 @@ dataset_folder = "placeholder_dataset"
 soundstream_ckpt = "results/soundstream.8.pt" # this can change depending on number of steps
 hubert_ckpt = 'hubert/hubert_base_ls960.pt'
 hubert_quantizer = f'hubert/hubert_base_ls960_L9_km500.bin' # listed in row "HuBERT Base (~95M params)", column Quantizer
+semantic_transformer_ckpt = 'results/semantic.transformer.0.pt'
 # Placeholder data generation
 wav2vec = HubertWithKmeans(
     checkpoint_path = f'./{hubert_ckpt}',
@@ -36,4 +37,4 @@ trainer = SemanticTransformerTrainer(
     num_train_steps = 1
 )
 
-trainer.train()
+trainer.load(semantic_transformer_ckpt)

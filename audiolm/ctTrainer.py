@@ -1,13 +1,6 @@
-import math
-import wave
-import struct
+
 import os
-import urllib.request
-import tarfile
-from audiolm_pytorch import SoundStream, SoundStreamTrainer, HubertWithKmeans, SemanticTransformer, SemanticTransformerTrainer, HubertWithKmeans, CoarseTransformer, CoarseTransformerWrapper, CoarseTransformerTrainer, FineTransformer, FineTransformerWrapper, FineTransformerTrainer, AudioLM
-from torch import nn
-import torch
-import torchaudio
+from audiolm_pytorch import SoundStream, HubertWithKmeans, HubertWithKmeans, CoarseTransformer, CoarseTransformerTrainer
 # hubert checkpoints can be downloaded at
 # https://github.com/facebookresearch/fairseq/tree/main/examples/hubert
 # define all dataset paths, checkpoints, etc
@@ -50,3 +43,5 @@ trainer = CoarseTransformerTrainer(
 # adjusting save_*_every variables for the same reason
 
 trainer.train()
+for filename in os.listdir('results/'):
+    print(filename)
