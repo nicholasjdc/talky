@@ -43,5 +43,4 @@ trainer = CoarseTransformerTrainer(
 # adjusting save_*_every variables for the same reason
 
 trainer.train()
-for filename in os.listdir('results/'):
-    print(filename)
+
